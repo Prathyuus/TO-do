@@ -31,10 +31,10 @@ ExceptionResponse exceptionResponse =
 return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
 }
 @Override
-protected ResponseEntity<Object> MethodArgumentNotValidException(Exception ex,
+protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 		HttpHeaders headers,HttpStatus status, WebRequest request){
 	ExceptionResponse exceptionResponse = 
-			new ExceptionResponse(new Date(),ex.getMessage(),
+			new ExceptionResponse(new Date(),"Validation Failed",
 			ex.getBindingResult().toString());
 return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
 }
